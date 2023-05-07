@@ -1,0 +1,30 @@
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 5px;
+    text-align: left;
+  }
+  /* .navbar{
+    background-color: rgb(59, 25, 110) !important;
+  }
+  .footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(59, 25, 110) !important;
+
+    color: rgb(255, 255, 255);
+    text-align: center;
+  } */
+  .nav-link:hover{
+    background-color: #cdced6;
+    border-radius: 10px;
+  }
+
+  .active{
+    background-color: rgba(102, 99, 107, 0.2) !important;
+  }
+

@@ -1,0 +1,78 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist" style="border-bottom: 0px;">
+  
+      <button class="nav-link active text-dark fw-bold" id="nav-create-tab" data-bs-toggle="tab" data-bs-target="#nav-create" type="button" role="tab" 
+      aria-controls="nav-create" aria-selected="true" (click)="enable()">Create User Info</button>
+  
+      <button class="nav-link text-dark fw-bold" id="nav-view-tab" data-bs-toggle="tab" data-bs-target="#nav-view" type="button" role="tab" 
+      aria-controls="nav-view" aria-selected="false" (click)="enable1()">View User Info</button>
+    </div>
+  </nav>
+  <br>
+  <h1 style="font-family: 'Audiowide', cursive; text-align: center;">
+    <span class="utility1 rounded "><span>Update User Info</span></span>
+  </h1>
+  
+  <div class="form" *ngIf="!boolVar">
+    <div class="row ">
+        <div class="col">
+            <div class="form-group">
+                <label for="firstName">Update User Email : </label>
+                <input type="email" class="form-control" [(ngModel)]="userinfo.email" id="email" name="email" ngModel #box1>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="firstName">Update User Type : </label>
+                <select class="form-select" aria-label="Default select example"
+                    [(ngModel)]="userinfo.userType" required name="userType" #box2 ngModel>
+                    <option value="CANDIDATE">Candidate</option>
+                    <option value="INTERVIEWER">Interviewer</option>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="firstName">Update Login Provider: </label>
+                <select class="form-select" aria-label="Default select example"
+                    [(ngModel)]="userinfo.loginProvider" required name="loginProvider" #box3 ngModel>
+                    <option value="DATABASE">Database</option>
+                    <option value="GITHUB">Github</option>
+                    <option value="MOCK">Mock</option>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="firstName">Update Is Mock User?: </label>
+                <select class="form-select" aria-label="Default select example"
+                    [(ngModel)]="userinfo.mockUser" required name="mockUser" #box4 ngModel>
+
+                    <option [ngValue]="true">true</option>
+                    <option [ngValue]="false">false</option>
+                </select>
+            </div>
+        </div>
+    </div>
+   
+
+    <div class="text-center mt-4">
+      <button type="button" class="btn btn-success mt-2" (click)="updateUserInfo()">Update</button>
+    </div>
+  
+  </div>
+  <div *ngIf="boolVar" class="row justify-content-center">
+    <div class="col-6">
+      <div class="card ">
+        <div class="text-center">
+          <h2 class="text-success text-center ">The Page Updated Successfully</h2>
+          <h4 class="text-success text-center">Thank You !</h4>
+          <button class="btn btn-primary " type="button" (click)="list()">Back to List</button>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  
+  <br>
+  

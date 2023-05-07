@@ -1,0 +1,179 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navnar-collapse " *ngIf="true">
+  <ul class="nav nav-tabs" style="border-bottom: 0px;">
+    <h2 class="text-white" style="font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bolder;">Hiring
+      Event</h2>
+  </ul>
+
+  <ul class="nav ">
+    <button class="btn text-white" style="border-radius: 5px; margin-right: 1rem; background-color: #3b196e;
+    border-color: #ffffff;" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+          <app-create-user></app-create-user>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-danger" style="border-radius: 5px; margin-right: 1rem"
+      (click)="logoutService.LogOut()">Logout</button>
+  </ul>
+</nav>
+<div class="container-fluid" style="font-size: 0.91rem;">
+  <div class="row flex-nowrap  shadow-lg " style=" background-color: rgb(231, 231, 231); width: 100vw; height: 90vh;">
+    <div class="card card-body  col-1"
+      style=" height: 80vh;margin-left: 2rem; margin-top: 2rem; margin-right: 2rem; padding-right: 4px;">
+      <div class="scrollbar sideNavScrollbar">
+        <div class="d-flex flex-column  align-items-sm-start pt-2 text-white min-vh-80">
+          <ul class="nav  nav-pills flex-column mb-sm-auto mb-0  align-items-sm-start" id="menu">
+            <li class="nav-item">
+              <a routerLink="../../home" class="nav-link align-middle px-2 " style="color:  black">
+                <i class="fa fa-home fa-2x"></i><span class="m-3">Home</span>
+              </a>
+              <br>
+            </li>
+            <li>
+              <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-2 align-items-sm-start"
+                style="color:  black">
+                <i class="fa fa-briefcase fa-2x" style="margin-top: 2px;"></i><span class="m-3">Jobs</span> </a>
+              <ul class="collapse show nav flex-column ms-5 " id="submenu1" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a routerLink="../../job-details" class="nav-link px-2" style="color: black;">Create Job Details </a>
+                </li>
+                <li>
+                  <a routerLink="../../job-details/view-job-details" class="nav-link px-2" style="color: black;">View
+                    Job Details </a>
+                </li>
+              </ul>
+              <br>
+            </li>
+            <li>
+              <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-2 align-middle " style="color: black">
+                <i class="fa fa-cogs fa-2x"></i><span class="m-3">Skills</span> </a>
+              <ul class="collapse show nav flex-column ms-5" id="submenu2" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a routerLink="../../skill-set" class="nav-link px-2" style="color: black;">Create Skill </a>
+                </li>
+                <li>
+                  <a routerLink="../../skill-set/view-skill-set" routerLinkActive="active" class="nav-link px-2"
+                    style="color: black;"> View Skills </a>
+                </li>
+              </ul>
+              <br>
+            </li>
+            <li>
+              <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-2 align-middle" style="color: black;">
+                <i class="fa fa-podcast fa-2x"></i><span class="m-3">Interview</span> </a>
+              <ul class="collapse show nav flex-column ms-5" id="submenu3" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a routerLink="../../interview-details" class="nav-link px-2" style="color: black;"> Create
+                    Interview</a>
+                </li>
+                <li>
+                  <a routerLink="../../interview-details/view-interview-details" class="nav-link px-2"
+                    style="color: black;"> View Interviews</a>
+                </li>
+
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a routerLink="../../my-account" routerLinkActive="active" class="nav-link align-middle px-2 "
+                style="color:  black">
+                <i class="fa fa-users fa-2x"></i><span class="m-3">My Account</span>
+              </a>
+              <br>
+            </li>
+          </ul>
+          <hr>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-body col-8 " style=" margin-top: 2rem; margin-right: 2rem; height: 80vh;">
+
+      <div class="row">
+        <div class="col">
+          <h2 style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center;">
+            <span class="utility1 rounded ">List of SkillSet</span>
+          </h2>
+        </div>
+        <div class="tableScrollbar">
+          <table class="table text-center table-striped">
+            <thead> <tr>
+              <th scope="col" class="col-2">SKILL_NAME</th>
+              <th scope="col" class="col-6">DESCRIPTION</th>
+              <th scope="col" class="col-2">ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let skillset of skillsets | async">
+                <td class="col-2">{{skillset.skillName}}</td>
+                <td class="col-6">{{skillset.description}}</td>
+                <td class="col-2">
+                  <div class="row">
+                    <div class="col">
+                      <button type="button" class="btn" style="background-color: white !important;"
+                        (click)="viewSkillSet(skillset.id)"><i class="fa fa-save fa-lg"
+                          style="color:green"></i></button>
+                    </div>
+                    <div class="col">
+                      <button type="button" class="btn" style="background-color: white !important;"
+                        (click)="updateSkillSet(skillset.id)"><i class="fa fa-edit fa-lg"
+                          style="color:rgb(59, 25, 110)"></i></button>
+                    </div>
+                    <div class="col">
+                      <button type="button" class="btn" style="background-color: white !important;"
+                        (click)="deleteSkillSet(skillset.id)"><i class="fa fa-trash fa-lg"
+                          style="color:red"></i></button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer ">
+  <h4>&copy; <a href="https://github.com/umaa-java-sept-2020/hiring-events" target="_blank"
+      style="text-decoration: none; color: white;"> Hiring_Event v2.0</a> </h4>
+</div>
+
+<!--
+<nav class="navbar navnar-collapse ">
+  <ul class="nav nav-tabs" style="border-bottom: 0px;">
+
+
+  </ul>
+  <ul class="nav nav-tabs" style="border-bottom: 0px;margin: auto;">
+
+    <li class="nav-item">
+      <a routerLink="../job-details" class="nav-link text-white me-2" routerLinkActive="active"
+        style="font-family:Arial, Helvetica, sans-serif; font-weight: bolder;">Jobs</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="../skill-set" class="nav-link text-white  me-2" routerLinkActive="active"
+        style="font-family:Arial, Helvetica, sans-serif; font-weight: bolder;">Skills</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="../user-info" class="nav-link text-white  me-2" routerLinkActive="active"
+        style="font-family:Arial, Helvetica, sans-serif; font-weight: bolder;">Users</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="../interview-details" class="nav-link text-white  me-2" routerLinkActive="active"
+        style="font-family:Arial, Helvetica, sans-serif; font-weight: bolder;">Interviews</a>
+    </li>
+  </ul>
+</nav>
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist" style="border-bottom: 0px;">
+
+      <button class="nav-link  text-dark fw-bold" id="nav-create-tab" data-bs-toggle="tab" data-bs-target="#nav-create" type="button" role="tab"
+      aria-controls="nav-create" aria-selected="true" (click)="enable()">Create Skillset</button>
+
+      <button class="nav-link active text-dark fw-bold" id="nav-view-tab" data-bs-toggle="tab" data-bs-target="#nav-view" type="button" role="tab"
+      aria-controls="nav-view" aria-selected="false" (click)="enable1()">View Skillset</button>
+    </div>
+</nav> -->

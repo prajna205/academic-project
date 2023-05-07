@@ -1,0 +1,77 @@
+<!-- <p class="mt-5 text-center" *ngIf="!boolVar"> -->
+<p class="text-center" >
+  <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Manage Skillset</a>
+</p>
+<!-- <div class="row justify-content-center" *ngIf="!boolVar"> -->
+<!-- <div class="row justify-content-center">
+  <div class="col-6">
+    <div class="collapse  multi-collapse" id="multiCollapseExample1" >
+      <form [formGroup]="form" (ngSubmit)="submitForm()" style="max-height:10vh;">
+        <div class="scrollbar">
+          <div class="card card-body" *ngFor="let skillset of skillsets | async; let i=index ; ">
+            <label>
+              <input type="checkbox" [value]="skillset.id" [checked]="check(skillset.id)== skillset.id" (change)="onCheckboxChange($event)"
+                >
+              {{skillset.skillName}}
+            </label>
+          </div>
+        </div>
+
+        <div class="text-center ">
+          <button class="btn btn-success mt-2" type="submit" value="submit">Save</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div> -->
+<div class="alert alert-light alert-dismissible fade show  position-absolute top-0 end-0" role="alert" *ngIf="boolVar" >
+  <strong >GREAT ! Skills Added Successfully...</strong>
+  <button  type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-md" >
+      <div class="modal-content">
+          <div class="modal-header" style="background-color: rgb(59, 25, 110) !important; color: white;">
+              <h5 class="modal-title text-center" id="exampleModalLabel2">Add Skills</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- <div class="card card-body col-8 " style=" margin-top: 2rem; margin-right: 2rem; height: 80vh;"> -->
+              <div class="row justify-content-center">
+                <div class="col-6">
+                    <form [formGroup]="form" (ngSubmit)="submitForm()" style="max-height: 40vh; margin-right: 20px;">
+                      <div class="scrollbar">
+                        <div class="card card-body" *ngFor="let skillset of skillsets | async; let i=index ; ">
+                          <label>
+                            <input type="checkbox" [value]="skillset.id" [checked]="check(skillset.id)== skillset.id" (change)="onCheckboxChange($event)"
+                              >
+                            {{skillset.skillName}}
+                          </label>
+                        </div>
+                      </div>
+              
+                      <div class="text-center ">
+                        <button class="btn btn-success mt-4" data-bs-dismiss="modal" type="submit" value="submit">Save</button>
+                      </div>
+              
+                    </form>
+                </div>
+              </div>        
+              <br>
+              <br>
+
+              <div class="alert alert-light alert-dismissible fade show  position-absolute top-0 end-0" role="alert" *ngIf="boolVar" >
+                <strong >GREAT ! Skills Added Successfully...</strong>
+                <button  type="button" class="btn-close text-white" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <br>
+        
+            <!-- </div> -->
+          </div>
+      </div>
+  </div>
+</div>

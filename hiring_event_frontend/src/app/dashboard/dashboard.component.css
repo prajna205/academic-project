@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Supermercado+One&display=swap');
+body{
+    margin: 0;
+    padding: 0;
+}
+
+hr{
+    height: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.btn-primary{
+    color: #fff;
+    background-color: #26c6da;
+    border-color: #0d6efd;
+}
+.btn-primary:hover{
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+.active{
+    background-color: white !important;
+    border-bottom: 2px solid rgb(85,20,180) !important;
+    color: black !important;
+}
+.nav-link:hover{
+    background-color: white !important;
+    border-bottom: 2px solid rgb(85,20,180) !important;
+    color: black !important;
+}
+
+.navbar-brand:hover{
+    background-color: white !important;
+    border-bottom: 2px solid rgb(85,20,180) !important;
+    color: black !important;
+}
+
+
+/* from app component */
+/* .card{
+  margin-top: 5px;
+  margin-bottom: 20%
+}
+
+ul>li>a{
+  font-size: large;
+}
+
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(85,20,180) !important;
+
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+
+.nav-item:hover{
+  background-color: #2B32B2;
+  border-radius: 10px;
+}
+
+.active{
+  background-color: rgb(209 207 213 / 20%) !important;
+}
+
+.navbar{
+  background-color: rgb(85,20,180) !important;
+} */

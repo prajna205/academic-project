@@ -1,0 +1,283 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<nav class="navbar navnar-collapse " *ngIf="true">
+    <ul class="nav nav-tabs" style="border-bottom: 0px;">
+        <h2 class="text-white" style="font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bolder;">
+            Hiring
+            Event</h2>
+    </ul>
+
+    <ul class="nav ">
+        <button class="btn btn-warning text-white" style="border-radius: 5px; margin-right: 1rem;background-color: #3b196e;
+        border-color: #ffffff;" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
+        <div class="modal fade" id="addUserModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+                <div class="modal-content">
+                    <app-create-user></app-create-user>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-danger" style="border-radius: 5px; margin-right: 1rem"
+            (click)="logoutService.LogOut()">Logout</button>
+    </ul>
+</nav>
+<div class="container-fluid" style="font-size: 0.91rem;">
+    
+    <div class="row flex-nowrap  shadow-lg " style=" background-color: rgb(231, 231, 231); width: 100vw; height: 90vh;">
+
+        <div class="card card-body  col-1"
+            style=" height: 80vh;margin-left: 2rem; margin-top: 2rem; margin-right: 2rem;padding-right: 4px;">
+            <div class="scrollbar tableScrollbar">
+
+                <div class="d-flex flex-column  align-items-sm-start pt-2 text-white min-vh-80">
+                    <ul class="nav  nav-pills flex-column mb-sm-auto mb-0  align-items-sm-start" id="menu">
+                        <li class="nav-item">
+                            <a routerLink="../home" routerLinkActive="active" class="nav-link align-middle px-2 "
+                                style="color:  black">
+                                <i class="fa fa-home fa-2x"></i><span class="m-3">Home</span>
+                            </a>
+                            <br>
+                        </li>
+                        <li>
+                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-2 align-items-sm-start"
+                                style="color:  black">
+                                <i class="fa fa-briefcase fa-2x" style="margin-top: 2px;"></i><span
+                                    class="m-3">Jobs</span> </a>
+                            <ul class="collapse show nav flex-column ms-5 " id="submenu1" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a routerLink="../job-details" routerLinkActive="active" class="nav-link px-2"
+                                        style="color: black;">Create Job Details </a>
+                                </li>
+                                <li>
+                                    <a routerLink="../job-details/view-job-details" routerLinkActive="active"
+                                        class="nav-link px-2" style="color: black;">View Job Details </a>
+                                </li>
+                            </ul>
+                            <br>
+                        </li>
+                        <li>
+                            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-2 align-middle "
+                                style="color: black">
+                                <i class="fa fa-cogs fa-2x"></i><span class="m-3">Skills</span> </a>
+                            <ul class="collapse show nav flex-column ms-5" id="submenu2" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a routerLink="../skill-set" routerLinkActive="active" class="nav-link px-2"
+                                        style="color: black;">Create Skill </a>
+                                </li>
+                                <li>
+                                    <a routerLink="../skill-set/view-skill-set" routerLinkActive="active"
+                                        class="nav-link px-2" style="color: black;"> View Skills </a>
+                                </li>
+                            </ul>
+                            <br>
+                        </li>
+                        <li>
+                            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-2 align-middle"
+                                style="color: black;">
+                                <i class="fa fa-podcast fa-2x"></i><span class="m-3">Interview</span> </a>
+                            <ul class="collapse show nav flex-column ms-5" id="submenu3" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a routerLink="../interview-details" routerLinkActive="active" class="nav-link px-2"
+                                        style="color: black;"> Create Interview</a>
+                                </li>
+                                <li>
+                                    <a routerLink="../interview-details/view-interview-details"
+                                        routerLinkActive="active" class="nav-link px-2" style="color: black;"> View
+                                        Interviews</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="../my-account" routerLinkActive="active" class="nav-link align-middle px-2 "
+                                style="color:  black">
+                                <i class="fa fa-users fa-2x"></i><span class="m-3">My Account</span>
+                            </a>
+                            <br>
+                        </li>
+                    </ul>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-body col-8 "
+            style=" margin-top: 2rem; margin-right: 2rem; margin-bottom: 9px; height: 80vh;">
+            <h4 class="text-center" style="margin-bottom: 5%;"> | My Account Setting Page |</h4>
+            <section style="margin-top: 2% ; margin-bottom:2%; justify-content: center;">
+                <div class="row">
+                    <div class="col-2">
+                        <label for="upload">
+                            <div *ngIf="isImageSelected; else notSelected">
+                                <img class="rounded-circle text-center" [src]="urlLink"
+                                    style="height: 200px; width: 200px;">
+                            </div>
+                            <ng-template #notSelected>
+                                <img src="../../assets/profile-user.png" style="height: 200px; cursor: pointer;" alt="">
+                                <h6><i>Upload Profile Picture</i></h6>
+                            </ng-template>
+                        </label>
+                        <input type="file" class="btn btn-success" style="display: none; visibility: none;"
+                            (change)="selectFile($event)" name="" id="upload">
+                    </div>
+                    <div class="col-8">
+                        <div>
+                            <div class="form" style="margin-left: 15%; width: 130%;">
+                                <div class="row">
+                                    <div class="form-group ">
+                                        <div class="col col-6">
+                                            <label><b>First Name : </b></label>
+                                            <input type="text" class="form-control bg-light w-100"
+                                                [(ngModel)]="userProfileDetails.firstName" id="firstName"
+                                                name="firstName">
+                                        </div>
+                                        <div class="col col-6">
+                                            <label><b>LastName : </b></label>
+                                            <input type="text" class="form-control bg-light"
+                                                [(ngModel)]="userProfileDetails.lastName" id="lastName" name="lastName">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group ">
+                                        <div class="col col-6">
+                                            <label><b>Email : </b></label>
+                                            <input type="text" class="form-control w-100 bg-light"
+                                                [(ngModel)]="userProfileDetails.email" id="email" name="email">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" >
+                                    <div class="form-group">
+                                        <div class="col-6">
+                                            <label><b>Mobile : </b></label>
+                                            <input type="text" class="form-control w-100 bg-light"
+                                                [(ngModel)]="userProfileDetails.mobile" id="mobile" name="mobile">
+                                        </div>
+                                        <div class="col-6">
+                                            <label><b>City : </b></label>
+                                            <input type="text" class="form-control bg-light"
+                                                [(ngModel)]="userProfileDetails.city" id="city" name="city">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn" style="color: black; background-color: rgb(94, 216, 196);"
+                            data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+                            Change
+                            Password
+                        </button>
+                        <div class="form-group">
+                            <div style="margin-top: 1%;">
+                                <div class="modal fade  " id="changePasswordModal" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-md ">
+                                        <div class="modal-content changePassModal">
+                                            <div class="card-body mt-3">
+                                                <form #f="ngForm">
+                                                    <div class="form-group m-1">
+                                                        <div class="input-group mb-4 " id="confirm_pwd">
+                                                            <span class="input-group-text" id="basic-addon1"><img
+                                                                    src="../../assets/key.png" alt=""
+                                                                    style="height: 30px;">
+                                                            </span>
+                                                            <input type="password" style="display: block;" id="password"
+                                                                name="password" class="form-control" ngModel
+                                                                #password="ngModel" [(ngModel)]="oldPassword"
+                                                                placeholder="Old password" required>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="input-group mb-4 " id="pwd">
+                                                        <span class="input-group-text" id="basic-addon1"><img
+                                                                src="../../assets/key.png" alt="" style="height: 30px;">
+                                                        </span>
+                                                        <input [type]="showType ? 'text' : 'password' "
+                                                            class="form-control" id="password" name="password" ngModel
+                                                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&]).{8,}"
+                                                            [(ngModel)]="newPassword" placeholder="Enter new Password"
+                                                            required #password="ngModel">
+                                                        <button type="button" class="btn"
+                                                            style="background-color: white !important; border: 1px solid #5514b4;"
+                                                            (click)="toggleShow()">
+                                                            <i class="fa fa-eye fa-eye fa-lg"
+                                                                [hidden]="showPassword"></i>
+                                                            <i class="fa fa-eye fa-eye-slash fa-lg"
+                                                                [hidden]="!showPassword"></i>
+                                                        </button>
+
+
+
+                                                        <span class="help-block" style="display: block;"
+                                                            *ngIf="!password.valid && password.touched">
+                                                            Must have at least one number, one lowercase and one
+                                                            uppercase
+                                                            letter.</span>
+                                                    </div>
+                                                    <div class="form-group m-1">
+                                                        <div class="input-group mb-4 " id="confirm_pwd">
+                                                            <span class="input-group-text" id="basic-addon1"><img
+                                                                    src="../../assets/key.png" alt=""
+                                                                    style="height: 30px;">
+                                                            </span>
+                                                            <input type="password" style="display: block;"
+                                                                class="form-control" id="confirmPassword"
+                                                                name="confirmPassword" ngModel
+                                                                [(ngModel)]="confirmPassword"
+                                                                placeholder="Retype password" required
+                                                                #confirm_password="ngModel">
+                                                            <span class="help-block"
+                                                                *ngIf="!(newPassword === confirmPassword) && confirm_password.touched">Password
+                                                                and Confirm
+                                                                Password must be match</span>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="text-center mt-4">
+                                                        <button class="btn btn-success text-white"
+                                                            data-bs-dismiss="modal" type="submit" type="button"
+                                                            (click)="changePasswordOnRequest()"
+                                                            [disabled]="!f.valid">Save</button>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+
+                                            <!-- <div *ngIf="goToResetPassword">
+                                                <app-reset-password></app-reset-password>
+        
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                <div style="text-align: center; margin: 2%; ">
+                    <button class="btn btn-success mt-2" (click)="updateProfile()">Update</button>
+                </div>
+            </section>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="footer ">
+    <h4>&copy; <a href="https://github.com/umaa-java-sept-2020/hiring-events" target="_blank"
+            style="text-decoration: none; color: white;"> Hiring_Event v2.0</a> </h4>
+</div>

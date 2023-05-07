@@ -1,0 +1,60 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist" style="border-bottom: 0px;">
+
+      <button class="nav-link  text-dark fw-bold" id="nav-create-tab" data-bs-toggle="tab" data-bs-target="#nav-create" type="button" role="tab" 
+      aria-controls="nav-create" aria-selected="true" (click)="enable()">Create Round Details</button>
+
+      <button class="nav-link active text-dark fw-bold" id="nav-view-tab" data-bs-toggle="tab" data-bs-target="#nav-view" type="button" role="tab" 
+      aria-controls="nav-view" aria-selected="false" (click)="enable1()">View Round Details</button>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col">
+        <h2 style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center;"> 
+        <span class="utility1 rounded ">List of Interview Rounds</span> 
+     </h2>
+    </div>
+    <div class="scrollbar">
+        <table class="table text-center table-striped">
+           
+            <thead>
+                <tr>
+                    <th scope="col" class="col-2">CANDIDATE_EMAIL_ID</th>
+                    <th scope="col" class="col-2">TITLE</th>
+                    <th scope="col" class="col-2">Interview ID</th>
+                    <th scope="col" class="col-2">STATUS</th>
+                    <th scope="col" class="col-4">ACTION</th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr *ngFor="let interviewRound of interviewRounds | async">
+                    <td class="col-2">{{interviewRound.candidateEmailId}}</td>
+                    <td class="col-2">{{interviewRound.title}}</td>
+                    <td class="col-2">{{interviewRound.interviewId}}</td>
+                    <td class="col-2">{{interviewRound.status}}</td>
+                    <td class="col-4">
+                        <div class="row">
+                            <div  class="col">
+                                <button type="button" class="btn" style="background-color: white !important;"
+                                (click)="viewInterviewRound(interviewRound.id)"
+                                ><i class="fa fa-eye fa-lg" style="color:black"></i></button>
+                            </div>
+                            <div  class="col">
+                                <button type="button" class="btn" style="background-color: white !important;"
+                                (click)="updateInterviewRound(interviewRound.id)"
+                                ><i class="fa fa-edit fa-lg" style="color:rgb(59, 25, 110)"></i></button>
+                            </div>
+                            <div  class="col">
+                                <button type="button" class="btn" style="background-color: white !important;"
+                                (click)="deleteInterviewRound(interviewRound.id)"
+                                ><i class="fa fa-trash fa-lg" style="color:red"></i></button>
+                            </div>
+                            
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

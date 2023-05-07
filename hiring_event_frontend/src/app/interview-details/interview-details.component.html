@@ -1,0 +1,170 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navnar-collapse " *ngIf="true">
+  <ul class="nav nav-tabs" style="border-bottom: 0px;">
+    <h2 class="text-white" style="font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bolder;">Hiring
+      Event</h2>
+  </ul>
+
+  <ul class="nav ">
+    <button class="btn text-white" style="border-radius: 5px; margin-right: 1rem; background-color: #3b196e;
+    border-color: #ffffff;" data-bs-toggle="modal"
+      data-bs-target="#addUserModal">Add User</button>
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+          <app-create-user></app-create-user>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-danger" style="border-radius: 5px; margin-right: 1rem"
+      (click)="logoutService.LogOut()">Logout</button>
+  </ul>
+</nav>
+<div class="container-fluid" style="font-size: 0.91rem;">
+  <div class="row flex-nowrap  shadow-lg " style=" background-color: rgb(231, 231, 231); width: 100vw; height: 90vh;">
+    <div class="card card-body  col-1"
+      style=" height: 80vh;margin-left: 2rem; margin-top: 2rem; margin-right: 2rem; padding-right: 4px; padding-bottom: 4px;">
+      <div class="scrollbar tableScrollbar">
+        <div class="d-flex flex-column  align-items-sm-start pt-2 text-white min-vh-80">
+          <ul class="nav  nav-pills flex-column mb-sm-auto mb-0  align-items-sm-start" id="menu">
+            <li class="nav-item">
+              <a routerLink="../home" routerLinkActive="active" class="nav-link align-middle px-2 "
+                style="color:  black">
+                <i class="fa fa-home fa-2x"></i><span class="m-3">Home</span>
+              </a>
+              <br>
+            </li>
+            <li>
+              <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-2 align-items-sm-start"
+                style="color:  black">
+                <i class="fa fa-briefcase fa-2x"></i><span class="m-3">Jobs</span> </a>
+              <ul class="collapse show nav flex-column ms-5 " id="submenu1" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a routerLink="../job-details" routerLinkActive="active" class="nav-link px-2"
+                    style="color: black;">Create Job Details </a>
+                </li>
+                <li>
+                  <a routerLink="../job-details/view-job-details" routerLinkActive="active" class="nav-link px-2"
+                    style="color: black;">View Job Details </a>
+                </li>
+              </ul>
+              <br>
+            </li>
+            <li>
+              <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-2 align-middle " style="color: black">
+                <i class="fa fa-cogs fa-2x"></i><span class="m-3">Skills</span> </a>
+              <ul class="collapse show nav flex-column ms-5" id="submenu2" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a routerLink="../skill-set" routerLinkActive="active" class="nav-link px-2"
+                    style="color: black;">Create Skill </a>
+                </li>
+                <li>
+                  <a routerLink="../skill-set/view-skill-set" routerLinkActive="active" class="nav-link px-2"
+                    style="color: black;"> View Skills </a>
+                </li>
+              </ul>
+              <br>
+            </li>
+            <li>
+              <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-2 align-middle" style="color: black;">
+                <i class="fa fa-podcast fa-2x"></i><span class="m-3">Interview</span> </a>
+              <ul class="collapse show nav flex-column ms-5" id="submenu3" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a routerLink="../interview-details" routerLinkActive="active" class="nav-link px-2"
+                    style="color: black;"> Create Interview</a>
+                </li>
+                <li>
+                  <a routerLink="../interview-details/view-interview-details" class="nav-link px-2"
+                    style="color: black;"> View Interviews</a>
+                </li>
+
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a routerLink="../my-account" routerLinkActive="active" class="nav-link align-middle px-2 " style="color:  black">
+                <i class="fa fa-users fa-2x"></i><span class="m-3">My Account</span>
+              </a>
+              <br>
+            </li>
+          </ul>
+          <hr>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-body col-8 " style=" margin-top: 2rem; margin-right: 2rem; height: 80vh;">
+
+      <div >
+        <br>
+        <h1 style="font-family: 'Audiowide', cursive; text-align: center;">
+          <span class="utility1 rounded"><span>{{titleInterviewDetails}}</span></span>
+        </h1>
+
+        <div class="container "  (keyup.enter)="save()">
+          <form #f="ngForm">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="firstName">TITLE : </label>
+                  <input type="text" class="form-control" id="TITLE" [(ngModel)]="interviewDetails.title" name="TITLE"
+                    #box1 required>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="firstName">JOB_DETAILS_ID : </label>
+                  <select class="form-select" aria-label="Default select example"
+                    [(ngModel)]="interviewDetails.jobDetailsId" (change)="onChange(box2.value)" required
+                    name="JOB_DETAILS_ID" #box2 ngModel>
+                    <option *ngFor="let jobdetail of jobdetails | async" [value]="jobdetail.id">
+                      {{jobdetail.id}}.{{jobdetail.title}}</option>
+
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="firstName">CANDIDATE_EMAIL : </label>
+                  <select class="form-select" aria-label="Default select example"
+                    [(ngModel)]="interviewDetails.candidateEmail" required name="CANDIDATE_EMAIL" #box3 ngModel>
+                    <!-- <ng-container *ngFor="let appplicant of applicants | async "> -->
+                    <option *ngFor="let appplicant of applicants | async " [value]="appplicant.emailId">
+                      {{appplicant.emailId}}
+                    </option>
+                    <!-- </ng-container> -->
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="firstName">INTERVIEW_STATUS : </label>
+                  <select class="form-select" aria-label="Default select example" [(ngModel)]="interviewDetails.status"
+                    required name="INTERVIEW_STATUS" #box4 ngModel>
+
+                    <option value="SCHEDULED">Scheduled</option>
+                    <option value="CANCELLED">Cancelled</option>
+                    <option value="POSITIVE">Positive</option>
+                    <option value="NEGATIVE">Negative</option>
+                    <option value="OFFERED">Offered</option>
+
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-sm btn-primary mt-3" style="margin: auto;" type="submit" type="button"
+                (click)="save()" [disabled]="!f.valid">Add Interview Details</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+   
+
+    </div>
+  </div>
+</div>
+<div class="footer ">
+  <h4>&copy; <a href="https://github.com/umaa-java-sept-2020/hiring-events" target="_blank"
+      style="text-decoration: none; color: white;"> Hiring_Event v2.0</a> </h4>
+</div>

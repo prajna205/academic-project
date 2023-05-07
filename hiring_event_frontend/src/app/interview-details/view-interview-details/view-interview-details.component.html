@@ -1,0 +1,149 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navnar-collapse " *ngIf="true">
+  <ul class="nav nav-tabs" style="border-bottom: 0px;">
+    <h2 class="text-white" style="font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bolder;">Hiring
+      Event</h2>
+  </ul>
+
+  <ul class="nav ">
+    <button class="btn text-white" style="border-radius: 5px; margin-right: 1rem; background-color: #3b196e;
+    border-color: #ffffff;" data-bs-toggle="modal"
+      data-bs-target="#addUserModal">Add User</button>
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+          <app-create-user></app-create-user>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-danger" style="border-radius: 5px; margin-right: 1rem"
+      (click)="logoutService.LogOut()">Logout</button>
+  </ul>
+</nav>
+<div class="container-fluid" style="font-size: 0.91rem;">
+  <div class="row flex-nowrap  shadow-lg " style=" background-color: rgb(231, 231, 231); width: 100vw; height: 90vh;">
+    <div class="card card-body  col-1"
+      style=" height: 80vh;margin-left: 2rem; margin-top: 2rem; margin-right: 2rem; padding-right: 4px;padding-bottom: 4px;">
+      <div class="scrollbar sideNavScrollbar">
+        <div class="d-flex flex-column  align-items-sm-start pt-2 text-white min-vh-80">
+          <ul class="nav  nav-pills flex-column mb-sm-auto mb-0  align-items-sm-start" id="menu">
+            <li class="nav-item">
+              <a routerLink="../../home" routerLinkActive="active" class="nav-link align-middle px-2 "
+                style="color:  black">
+                <i class="fa fa-home fa-2x"></i><span class="m-3">Home</span>
+              </a>
+              <br>
+            </li>
+            <li>
+              <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-2 align-items-sm-start"
+                style="color:  black">
+                <i class="fa fa-briefcase fa-2x" style="margin-top: 2px;"></i><span class="m-3">Jobs</span> </a>
+              <ul class="collapse show nav flex-column ms-5 " id="submenu1" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a routerLink="../../job-details" routerLinkActive="active" class="nav-link px-2"
+                    style="color: black;">Create Job Details </a>
+                </li>
+                <li>
+                  <a routerLink="../../job-details/view-job-details" routerLinkActive="active" class="nav-link px-2"
+                    style="color: black;">View Job Details </a>
+                </li>
+              </ul>
+              <br>
+            </li>
+            <li>
+              <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-2 align-middle " style="color: black">
+                <i class="fa fa-cogs fa-2x"></i><span class="m-3">Skills</span> </a>
+              <ul class="collapse show nav flex-column ms-5" id="submenu2" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a routerLink="../../skill-set" routerLinkActive="active" class="nav-link px-2"
+                    style="color: black;">Create Skill </a>
+                </li>
+                <li>
+                  <a routerLink="../../skill-set/view-skill-set" routerLinkActive="active" class="nav-link px-2"
+                    style="color: black;"> View Skills </a>
+                </li>
+              </ul>
+              <br>
+            </li>
+            <li>
+              <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-2 align-middle" style="color: black;">
+                <i class="fa fa-podcast fa-2x"></i><span class="m-3">Interview</span> </a>
+              <ul class="collapse show nav flex-column ms-5" id="submenu3" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a routerLink="../../interview-details" class="nav-link px-2" style="color: black;"> Create
+                    Interview</a>
+                </li>
+                <li>
+                  <a routerLink="../../interview-details/view-interview-details" routerLinkActive="active"
+                    class="nav-link px-2" style="color: black;"> View Interviews</a>
+                </li>
+
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a routerLink="../../my-account" routerLinkActive="active" class="nav-link align-middle px-2 " style="color:  black">
+                <i class="fa fa-users fa-2x"></i><span class="m-3">My Account</span>
+              </a>
+              <br>
+            </li>
+          </ul>
+          <hr>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-body col-8 " style=" margin-top: 2rem; margin-right: 2rem; height: 80vh;">
+      <br>
+      <div class="row">
+        <div class="col">
+          <h2 style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center;">
+            <span class="utility1 rounded">List of Interview Details</span>
+          </h2>
+        </div>
+        <div class="tableScrollbar">
+          <table class="table text-center table-striped">
+            <thead>
+
+              <tr>
+                <th scope="col" class="col-1">ID</th>
+                <th scope="col" class="col-1">TITLE</th>
+                <th scope="col" class="col-2">JOB DETAILS ID</th>
+                <th scope="col" class="col-2">CANDIDATE EMAIL</th>
+                <th scope="col" class="col-2">STATUS</th>
+                <th scope="col" class="col-2">ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let interviewDetail of interviewDetails | async">
+                <td class="col-1">{{interviewDetail.id}}</td>
+                <td class="col-1">{{interviewDetail.title}}</td>
+                <td class="col-2">{{interviewDetail.jobDetailsId}}</td>
+                <td class="col-2">{{interviewDetail.candidateEmail}}</td>
+                <td class="col-2">{{interviewDetail.status}}</td>
+                <td class="col-2">
+                  <div class="row">
+                    <div class="col">
+                      <button type="button" class="btn" style="background-color: white !important;" (click)="viewInterviewDetails(interviewDetail.id)"><i class="fa fa-eye fa-lg" style="color:black"></i></button>
+                    </div>
+                    <div class="col">
+                      <button type="button" class="btn" style="background-color: white !important;" (click)="updateSkillSet(interviewDetail.id)"><i class="fa fa-edit fa-lg" style="color:rgb(59, 25, 110)"></i></button>
+                    </div>
+                    <div class="col">
+                      <button type="button" class="btn" style="background-color: white !important;" (click)="deleteSkillSet(interviewDetail.id)"><i class="fa fa-trash fa-lg" style="color:red"></i></button>
+                    </div>
+
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="footer ">
+  <h4>&copy; <a href="https://github.com/umaa-java-sept-2020/hiring-events" target="_blank"
+      style="text-decoration: none; color: white;"> Hiring_Event v2.0</a> </h4>
+</div>

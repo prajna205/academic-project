@@ -1,0 +1,8 @@
+.nav-link:hover{
+  background-color: #cdced6;
+  border-radius: 10px;
+}
+
+.active{
+  background-color: rgba(102, 99, 107, 0.2) !important;
+}

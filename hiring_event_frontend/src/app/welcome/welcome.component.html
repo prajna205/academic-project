@@ -1,0 +1,69 @@
+<div class="container-fluid" >
+    <div class="row flex-nowrap">
+        <div class="card card-body  col-3"  style=" font-size: larg; height: 80vh;">
+            <!-- <div class="d-flex flex-column  align-items-sm-start pt-2 text-white min-vh-100">
+                <ul class="nav  nav-pills flex-column mb-sm-auto mb-0  align-items-sm-start" id="menu">
+                    <li class="nav-item" >
+                        <a href="http://localhost:4200/home" routerLinkActive="active" class="nav-link align-middle px-0 "  style="color:  black">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-house-heart-fill" viewBox="0 0 16 16" style="color:  rgb(57, 19, 114);">
+                            <path fill-rule="evenodd" d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L8 2.207l6.646 6.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
+                            <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Zm0 5.189c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.691 0-5.018Z"/>
+                          </svg><span class="m-3">Home</span>
+                        </a>
+                        <br>
+                    </li>
+                    <li>
+                        <a href="#submenu1"  data-bs-toggle="collapse" class="nav-link px-0 align-items-sm-start"  style="color:  black">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-briefcase-fill" viewBox="0 0 16 16" style="color:  rgb(57, 19, 114);">
+                                <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
+                              </svg><span class="m-3">Jobs</span> </a>
+                        <ul class="collapse show nav flex-column ms-5 " id="submenu1" data-bs-parent="#menu" >
+                            <li class="w-100">
+                                <a  routerLink="../job-details"  routerLinkActive="active" class="nav-link px-0"  style="color: black;">Create Job Details  </a>
+                            </li>
+                            <li>
+                                <a  routerLink="../job-details/view-job-details"  routerLinkActive="active"  class="nav-link px-0" style="color: black;">View Job Details </a>
+                            </li>
+                        </ul>
+                        <br>
+                    </li>
+                    <li>
+                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle "  style="color: black">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16" style="color:  rgb(57, 19, 114);">
+                                <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                                <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                              </svg><span class="m-3">Skills</span> </a>
+                        <ul class="collapse show nav flex-column ms-5" id="submenu2" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a  href="http://localhost:4200/skill-set"  routerLinkActive="active" class="nav-link px-0" style="color: black;">Create Skill </a>
+                            </li>
+                            <li>
+                                <a  href="http://localhost:4200/skill-set/view-skill-set"  routerLinkActive="active" class="nav-link px-0" style="color: black;"> View Skills </a>
+                            </li>
+                        </ul>
+                        <br>
+                    </li>
+                    <li>
+                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle"  style="color: black;">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16" style="color:  rgb(57, 19, 114);">
+                                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                              </svg><span class="m-3">Interview</span>  </a>
+                            <ul class="collapse show nav flex-column ms-5" id="submenu3" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="http://localhost:4200/interview-details"  routerLinkActive="active" class="nav-link px-0" style="color: black;"> Create Interview</a>
+                            </li>
+                            <li>
+                                <a href="http://localhost:4200/interview-details/view-interview-details"  routerLinkActive="active" class="nav-link px-0" style="color: black;"> View Interviews</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+                <hr>
+            </div> -->
+        </div>
+    </div>
+</div>

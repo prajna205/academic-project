@@ -1,0 +1,89 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist" style="border-bottom: 0px;">
+
+        <button class="nav-link active text-dark fw-bold" id="nav-create-tab" data-bs-toggle="tab"
+            data-bs-target="#nav-create" type="button" role="tab" aria-controls="nav-create" aria-selected="true"
+            (click)="enable()">Create User Info</button>
+
+        <button class="nav-link text-dark fw-bold" id="nav-view-tab" data-bs-toggle="tab" data-bs-target="#nav-view"
+            type="button" role="tab" aria-controls="nav-view" aria-selected="false" (click)="enable1()">View User
+            Info</button>
+    </div>
+</nav>
+
+<br>
+
+<div *ngIf="boolVar1">
+
+    <div *ngIf="!submitted">
+        <br>
+        <h1 style="font-family: 'Audiowide', cursive; text-align: center;">
+            <span class="utility1 rounded"><span>{{titleUserInfo}}</span></span>
+        </h1>
+
+
+        <div *ngIf="!submitted">
+            <div class="container">
+                <div class="scrollbar">
+                    <form #f="ngForm">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="firstName">EMAIL : </label>
+                                    <input type="text" class="form-control" id="EMAIL" [(ngModel)]="userinfo.email"
+                                        name="EMAIL"  required email #email="ngModel">
+                                    <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid
+                                        email</span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="firstName">USER TYPE : </label>
+                                    <select class="form-select" aria-label="Default select example"
+                                        [(ngModel)]="userinfo.userType" required name="userType" #box2 ngModel>
+                                        <option value="CANDIDATE">Candidate</option>
+                                        <option value="INTERVIEWER">Interviewer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="firstName">LOGIN PROVIDER: </label>
+                                    <select class="form-select" aria-label="Default select example"
+                                        [(ngModel)]="userinfo.loginProvider" required name="loginProvider" #box3 ngModel>
+                                        <option value="DATABASE">Database</option>
+                                        <option value="GITHUB">Github</option>
+                                        <option value="MOCK">Mock</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="firstName">IS MOCK USER?: </label>
+                                    <select class="form-select" aria-label="Default select example"
+                                        [(ngModel)]="userinfo.mockUser" required name="mockUser" #box4 ngModel>
+
+                                        <option [ngValue]="true">true</option>
+                                        <option [ngValue]="false">false</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-sm btn-primary mt-3" type="submit" type="button" (click)="save()"
+                                [disabled]="!f.valid">Add User Info</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="submitted" class="text-center">
+        <h2>Your Information Added Successfully !</h2>
+        <div class="alert alert-light alert-dismissible fade show  position-absolute top-0 end-0" role="alert">
+            <strong>GREAT ! Skills Added Successfully...</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+</div>    
+ <app-view-user-info *ngIf="boolVar2" ></app-view-user-info>

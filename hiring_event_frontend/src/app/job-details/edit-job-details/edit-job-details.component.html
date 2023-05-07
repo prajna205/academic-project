@@ -1,0 +1,192 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navnar-collapse " *ngIf="true">
+  <ul class="nav nav-tabs" style="border-bottom: 0px;">
+    <h2 class="text-white" style="font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bolder;">Hiring
+      Event</h2>
+  </ul>
+
+  <ul class="nav ">
+    <button class="btn text-white" style="border-radius: 5px; margin-right: 1rem; background-color: #3b196e;
+    border-color: #ffffff;" data-bs-toggle="modal"
+      data-bs-target="#addUserModal">Add User</button>
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+          <app-create-user></app-create-user>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-danger" style="border-radius: 5px; margin-right: 1rem"
+      (click)="logoutService.LogOut()">Logout</button>
+  </ul>
+</nav>
+<div class="container-fluid" style="font-size: 0.91rem;">
+  <div class="row flex-nowrap  shadow-lg " style=" background-color: rgb(231, 231, 231); width: 100vw; height: 90vh;">
+    <div class="card card-body  col-1"
+      style=" height: 80vh;margin-left: 2rem; margin-top: 2rem; margin-right: 2rem; padding-right: 4px; padding-bottom: 4px;">
+      <div class="scrollbar tableScrollbar">
+        <div class="d-flex flex-column  align-items-sm-start pt-2 text-white min-vh-80">
+          <ul class="nav  nav-pills flex-column mb-sm-auto mb-0  align-items-sm-start" id="menu">
+            <li class="nav-item">
+              <a routerLink="../../../home" class="nav-link align-middle px-2 " style="color:  black">
+                <i class="fa fa-home fa-2x"></i><span class="m-3">Home</span>
+              </a>
+              <br>
+            </li>
+            <li>
+              <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-2 align-items-sm-start"
+                style="color:  black">
+                <i class="fa fa-briefcase fa-2x" style="margin-top: 2px;"></i><span class="m-3">Jobs</span> </a>
+              <ul class="collapse show nav flex-column ms-5 " id="submenu1" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a routerLink="../../../job-details" class="nav-link px-2" style="color: black;">Create Job Details
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="../../../job-details/view-job-details" routerLinkActive="active" class="nav-link px-2"
+                    style="color: black;">View Job Details </a>
+                </li>
+              </ul>
+              <br>
+            </li>
+            <li>
+              <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-2 align-middle " style="color: black">
+                <i class="fa fa-cogs fa-2x"></i><span class="m-3">Skills</span> </a>
+              <ul class="collapse show nav flex-column ms-5" id="submenu2" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a routerLink="../../../skill-set" class="nav-link px-2" style="color: black;">Create Skill </a>
+                </li>
+                <li>
+                  <a routerLink="../../../skill-set/view-skill-set" class="nav-link px-2" style="color: black;"> View
+                    Skills </a>
+                </li>
+              </ul>
+              <br>
+            </li>
+            <li>
+              <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-2 align-middle" style="color: black;">
+                <i class="fa fa-podcast fa-2x"></i><span class="m-3">Interview</span> </a>
+              <ul class="collapse show nav flex-column ms-5" id="submenu3" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a routerLink="../../../interview-details" class="nav-link px-2" style="color: black;"> Create
+                    Interview</a>
+                </li>
+                <li>
+                  <a routerLink="../../../interview-details/view-interview-details" class="nav-link px-2"
+                    style="color: black;"> View Interviews</a>
+                </li>
+
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a routerLink="../../../my-account" routerLinkActive="active" class="nav-link align-middle px-2 " style="color:  black">
+                <i class="fa fa-users fa-2x"></i><span class="m-3">My Account</span>
+              </a>
+              <br>
+            </li>
+          </ul>
+          <hr>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-body col-8 " style=" margin-top: 2rem; margin-right: 2rem; height: 80vh;">
+
+      <br>
+      <h1 style="font-family: 'Audiowide', cursive; text-align: center;">
+        <span class="utility1 rounded "><span>Update Job Details</span></span>
+      </h1>
+
+      <div class="form"  (keyup.enter)="updateJobDetails()">
+        <div class="row">
+          <div class="col">
+            <div class="form-group ">
+              <label><b> Title : </b></label>
+              <input type="text" class="form-control" [(ngModel)]="jobdetails.title" id="name" name="title">
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group ">
+              <label><b>Update Description : </b></label>
+              <input type="text" class="form-control" [(ngModel)]="jobdetails.description" id="description"
+                name="description">
+            </div>
+          </div>
+          
+          <div class="col">
+            <div class="form-group ">
+              <label><b>Update Interviewer Email : </b></label>
+              <input type="email" class="form-control" [(ngModel)]="jobdetails.interviewerEmail" id="interviewerEmail"
+                name="interviewerEmail">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group ">
+              <label><b>Update Manager Email : </b></label>
+              <input type="email" class="form-control" [(ngModel)]="jobdetails.hiringManagerEmail"
+                id="hiringManagerEmail" name="hiringManagerEmail">
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group ">
+              <label><b>Update No. Of Positions : </b></label>
+              <input type="number" class="form-control" [(ngModel)]="jobdetails.numOfPositions" id="numOfPositions" name="numOfPositions" min="1">
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group ">
+              <label><b>Update Team : </b></label>
+              <input type="text" class="form-control" [(ngModel)]="jobdetails.team" id="team" name="team" >
+            </div>
+          </div>
+
+          
+          
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group ">
+              <label><b>Update Exp. Date : </b></label>
+              <input type="date" class="form-control" [(ngModel)]="jobdetails.jobExpiryDate" 
+               id="expDt" name="expDt" min="{{minExpDate}}">
+            </div>
+          </div>
+          
+
+          <div class="col">
+            <div class="form-group ">
+              <label><b>Update Min Experience : </b></label>
+              <input type="number" class="form-control" [(ngModel)]="jobdetails.minExp" id="minExp" name="minExp" min="0">
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group ">
+              <label><b>Update Max Experience : </b></label>
+              <input type="number" class="form-control" [(ngModel)]="jobdetails.maxExp" id="maxExp" name="maxExp" min="0">
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <button type="button" class="btn btn-success mt-2" (click)="updateJobDetails()">Update</button>
+        </div>
+      </div>
+
+
+
+      <br>
+      <br>
+      <app-jobdetails-skillset-mapping></app-jobdetails-skillset-mapping>
+
+    </div>
+  </div>
+</div>
+<div class="footer ">
+  <h4>&copy; <a href="https://github.com/umaa-java-sept-2020/hiring-events" target="_blank"
+      style="text-decoration: none; color: white;"> Hiring_Event v2.0</a> </h4>
+</div>

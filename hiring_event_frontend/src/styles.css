@@ -1,0 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+.tableScrollbar{
+    overflow: hidden;
+    width: 100%;
+    max-height: 65vh;
+  }
+  .tableScrollbar:hover{
+    overflow: auto;
+    width: 100%;
+    max-height:65vh;
+  }
+.sideNavScrollbar{
+    overflow: hidden;
+    width: 100%;
+    max-height: 80vh;
+  }
+  .sideNavScrollbar:hover{
+    overflow: auto;
+    width: 100%;
+    max-height:80vh;
+  }
+  .scrollbar{
+    overflow: hidden;
+    width: 100%;
+    max-height: 75vh;
+}
+.scrollbar:hover{
+    overflow: auto;
+    width: 100%;
+    max-height:75vh;
+}
+  .navbar{
+    background-color: rgb(59, 25, 110) !important;
+  }
+  .footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(59, 25, 110) !important;
+  
+    color: rgb(255, 255, 255);
+    text-align: center;
+  }
+
+::-webkit-scrollbar,::-webkit-scrollbar:horizontal  {
+    width: 5px;
+    height: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track,::-webkit-scrollbar-track:horizontal  {
+    background: #f1f1f1;
+    border-radius: 5px;
+  }
+  
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb,::-webkit-scrollbar-thumb:horizontal {
+    background: #888;
+    border-radius: 5px;
+  }
+  
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover,::-webkit-scrollbar-thumb:hover:horizontal {
+    background: #555;
+  }

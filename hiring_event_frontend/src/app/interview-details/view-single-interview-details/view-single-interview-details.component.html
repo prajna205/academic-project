@@ -1,0 +1,268 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navnar-collapse " *ngIf="true">
+  <ul class="nav nav-tabs" style="border-bottom: 0px;">
+    <h2 class="text-white" style="font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bolder;">Hiring
+      Event</h2>
+  </ul>
+
+  <ul class="nav ">
+    <button class="btn text-white" style="border-radius: 5px; margin-right: 1rem; background-color: #3b196e;
+    border-color: #ffffff;" data-bs-toggle="modal"
+      data-bs-target="#addUserModal">Add User</button>
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+          <app-create-user></app-create-user>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-danger" style="border-radius: 5px; margin-right: 1rem"
+      (click)="logoutService.LogOut()">Logout</button>
+  </ul>
+</nav>
+<div class="container-fluid" style="font-size: 0.91rem;">
+  <div class="row flex-nowrap  shadow-lg " style=" background-color: rgb(231, 231, 231); width: 100vw; height: 90vh;">
+    <div class="card card-body  col-1"
+      style=" height: 80vh;margin-left: 2rem; margin-top: 2rem; margin-right: 2rem; padding-right: 4px;padding-bottom: 4px;">
+      <div class="scrollbar tableScrollbar">
+        <div class="d-flex flex-column  align-items-sm-start pt-2 text-white min-vh-80">
+          <ul class="nav  nav-pills flex-column mb-sm-auto mb-0  align-items-sm-start" id="menu">
+            <li class="nav-item">
+              <a routerLink="../../../home" class="nav-link align-middle px-2 " style="color:  black">
+                <i class="fa fa-home fa-2x"></i>><span class="m-3">Home</span>
+              </a>
+              <br>
+            </li>
+            <li>
+              <a href="#submenu1" data-bs-toggle="collapse" class="nav-link 2 align-items-sm-start"
+                style="color:  black">
+                <i class="fa fa-briefcase fa-2x" style="margin-top: 2px;"></i><span class="m-3">Jobs</span> </a>
+              <ul class="collapse show nav flex-column ms-5 " id="submenu1" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a routerLink="../../../job-details" class="nav-link px-2" style="color: black;">Create Job Details
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="../../../job-details/view-job-details" class="nav-link px-2" style="color: black;">View
+                    Job Details </a>
+                </li>
+              </ul>
+              <br>
+            </li>
+            <li>
+              <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-2 align-middle " style="color: black">
+                <i class="fa fa-cogs fa-2x"></i>><span class="m-3">Skills</span> </a>
+              <ul class="collapse show nav flex-column ms-5" id="submenu2" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a routerLink="../../../skill-set" class="nav-link px-2" style="color: black;">Create Skill </a>
+                </li>
+                <li>
+                  <a routerLink="../../../skill-set/view-skill-set" class="nav-link px-2" style="color: black;"> View
+                    Skills </a>
+                </li>
+              </ul>
+              <br>
+            </li>
+            <li>
+              <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-2 align-middle" style="color: black;">
+                <i class="fa fa-podcast fa-2x"></i><span class="m-3">Interview</span> </a>
+              <ul class="collapse show nav flex-column ms-5" id="submenu3" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a routerLink="../../../interview-details" class="nav-link px-2" style="color: black;"> Create
+                    Interview</a>
+                </li>
+                <li>
+                  <a routerLink="../../../interview-details/view-interview-details" class="nav-link px-2"
+                    style="color: black;"> View Interviews</a>
+                </li>
+
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a routerLink="../../../my-account" routerLinkActive="active" class="nav-link align-middle px-2 "
+                style="color:  black">
+                <i class="fa fa-users fa-2x"></i><span class="m-3">My Account</span>
+              </a>
+              <br>
+            </li>
+          </ul>
+          <hr>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-body col-8 " style=" margin-top: 2rem; margin-right: 2rem; height: 80vh;">
+      <div class="scrollbar">
+
+        <h2 style="font-family: Georgia, 'Times New Roman', Times, serif;   text-align: center;">Details</h2>
+
+        <div *ngIf="interviewDetails" style="text-align: center;" class="text-center">
+
+          <table style=" width:70%; margin-left:15%; margin-right:15%;">
+            <tr>
+              <th>Id:</th>
+              <td>{{interviewDetails.id}}</td>
+            </tr>
+            <tr>
+              <th>Job Details Id:</th>
+              <td><a
+                  routerLink="../../../job-details/view-job-details/view-single-job-details/{{interviewDetails.jobDetailsId}}">
+                  Job_Details_With_ID = {{interviewDetails.jobDetailsId}}</a></td>
+            </tr>
+            <tr>
+              <th>Title:</th>
+              <td>{{interviewDetails.title}}</td>
+            </tr>
+            <tr>
+              <th>Candidate Email:</th>
+              <td>{{interviewDetails.candidateEmail}}</td>
+            </tr>
+            <tr>
+              <th>Status:</th>
+              <td>{{interviewDetails.status}}</td>
+            </tr>
+          </table>
+
+          <h3 class="text-center mt-2"
+            style="font-family: Georgia, 'Times New Roman', Times, serif;   text-align: center;">Multiple Round
+            Details
+          </h3>
+          <app-view-multiple-rounds></app-view-multiple-rounds>
+
+        </div>
+
+        <br>
+
+        <div style="text-align: center;">
+          <button class="btn btn-primary m-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Manage
+            Rounds</button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Add Interview Rounds</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body mt-4">
+                  <div class="tab-content" id="nav-tabContent">
+                    <div *ngIf="!submitted">
+                      <br>
+
+                      <div class="container">
+                        <form #f="ngForm">
+                          <div class="row">
+                            <div class="col mb-3">
+                              <div class="form-group">
+                                <label for="interviewId">Interview Id : </label>
+                                <input type="number" class="form-control" id="interviewId" name="INTERVIEW_ID" ngModel
+                                  #box1 [(ngModel)]="interviewRound.interviewId" [ngModel]="interviewID" disabled
+                                  required>
+                              </div>
+                            </div>
+                            <div class="col mb-3">
+                              <div class="form-group">
+                                <label for="firstName">Candidate Email : </label>
+                                <input type="text" class="form-control" id="candidateEmailId" name="candidateEmailId"
+                                  ngModel #box1 [(ngModel)]="interviewRound.candidateEmailId"
+                                  [ngModel]="candidateEmailID" disabled required>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col mb-3">
+                              <div class="form-group">
+                                <label for="firstName">Interviewer Email Id : </label>
+                                <select class="form-select" aria-label="Default select example"
+                                  [(ngModel)]="interviewRound.interviewerEmailId" required name="INTERVIEWER_EMAIL_ID"
+                                  #box3 ngModel>
+                                  <ng-container *ngFor="let jobdetail of jobDetails | async ">
+                                    <option [value]="jobdetail.interviewerEmail">
+                                      {{jobdetail.interviewerEmail}}
+                                    </option>
+                                  </ng-container>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col mb-3">
+                              <div class="form-group">
+                                <label for="title">Title : </label>
+                                <input type="text" class="form-control" id="title" name="team" ngModel #box4
+                                  [(ngModel)]="interviewRound.title" required>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col mb-3">
+                              <div class="form-group">
+                                <label for="interviewDate">Interview Date : </label>
+                                <input type="date" class="form-control" id="interviewDate" name="interviewDate" ngModel
+                                  #box5 [(ngModel)]="interviewRound.interviewDate" required>
+                              </div>
+                            </div>
+                            <div class="col mb-3">
+                              <div class="form-group">
+                                <label for="interviewTime">Interview Time : </label>
+                                <input type="time" class="form-control" id="interviewTime" name="interviewTime" ngModel
+                                  #box6 [(ngModel)]="interviewRound.interviewTime" required>
+                              </div>
+                            </div>
+                            <div class="col mb-3">
+                              <div class="form-group">
+                                <label for="virtualLink">Virtual Link : </label>
+                                <input type="text" class="form-control" id="virtualLink" name="virtualLink" ngModel
+                                  #box7 [(ngModel)]="interviewRound.virtualLink" required>
+                              </div>
+                            </div>
+                            <div class="col mb-3">
+                              <div class="form-group">
+                                <label for="interviewFeedBack">FeedBack : </label>
+                                <input type="text" class="form-control" id="interviewFeedBack" name="interviewFeedBack"
+                                  ngModel #box8 [(ngModel)]="interviewRound.interviewFeedBack" required>
+                              </div>
+                            </div>
+                            <div class="col mb-3">
+                              <div class="form-group">
+                                <label for="status">Status : </label>
+                                <select class="form-select" aria-label="Default select example"
+                                  [(ngModel)]="interviewRound.status" required name="INTERVIEW_STATUS" #box9 ngModel>
+
+                                  <option value="SCHEDULED">Scheduled</option>
+                                  <option value="CANCELLED">Cancelled</option>
+                                  <option value="POSITIVE">Positive</option>
+                                  <option value="NEGATIVE">Negative</option>
+                                  <option value="OFFERED">Offered</option>
+
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="text-center">
+                            <button class="btn btn-sm btn-primary mt-3" type="submit" type="button" (click)="save()"
+                              [disabled]="!f.valid">Add Interview Rounds</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div *ngIf="boolVar" class="text-center">
+                      <strong>Form Submitted Successfully !</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button (click)="list()" class="btn btn-primary m-5">Back to List</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer ">
+  <h4>&copy; <a href="https://github.com/umaa-java-sept-2020/hiring-events" target="_blank"
+      style="text-decoration: none; color: white;"> Hiring_Event v2.0</a> </h4>
+</div>

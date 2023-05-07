@@ -1,0 +1,63 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist" style="border-bottom: 0px;">
+
+      <button class="nav-link  text-dark fw-bold" id="nav-create-tab" data-bs-toggle="tab" data-bs-target="#nav-create" type="button" role="tab" 
+      aria-controls="nav-create" aria-selected="true" (click)="enable()">Create Round Details</button>
+
+      <button class="nav-link active text-dark fw-bold" id="nav-view-tab" data-bs-toggle="tab" data-bs-target="#nav-view" type="button" role="tab" 
+      aria-controls="nav-view" aria-selected="false" (click)="enable1()">View Round Details</button>
+    </div>
+</nav>
+
+<h2 style="font-family: Georgia, 'Times New Roman', Times, serif;   text-align: center;">Details</h2>
+<div *ngIf="interviewRounds" style="text-align: center;" class="text-center">
+    <table style=" width:70%; margin-left:15%; margin-right:15%;">
+        <tr>
+            <th>Id:</th>
+            <td>{{interviewRounds.id}}</td>
+        </tr>
+        <tr>
+            <th>Interview Id:</th>
+            <td>{{interviewRounds.interviewId}}</td>
+        </tr>
+        <tr>
+            <th>Candidate Email Id:</th>
+            <td>{{interviewRounds.candidateEmailId}}</td>
+        </tr>
+        <tr>
+            <th>Interviewer Email Id:</th>
+            <td>{{interviewRounds.interviewerEmailId}}</td>
+        </tr>
+        <tr>
+            <th>Title:</th>
+            <td>{{interviewRounds.title}}</td>
+        </tr>
+        <tr>
+            <th>Interview Date:</th>
+            <td>{{interviewRounds.interviewDate}}</td>
+        </tr>
+        <tr>
+            <th>InterviewTime:</th>
+            <td>{{interviewRounds.interviewTime}}</td>
+        </tr>
+        <tr>
+            <th>Virtual Link:</th>
+            <td>{{interviewRounds.virtualLink}}</td>
+        </tr>
+        <tr>
+            <th>Interview FeedBack:</th>
+            <td>{{interviewRounds.interviewFeedBack}}</td>
+        </tr>
+        <tr>
+            <th>Status:</th>
+            <td>{{interviewRounds.status}}</td>
+        </tr>
+
+    </table>
+</div>
+
+<br>
+<br>
+<div style="text-align: center;">
+<button (click)="list()" class="btn btn-primary">Back to List</button>
+</div>

@@ -1,0 +1,95 @@
+<h2 class="text-center ">List of jobs for Freshers in Bhubaneswar 2021-22</h2>
+<p class="text-center mt-2 mb-4">Odisha, India</p>
+<div class="search-hero">
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="on"
+        placeholder="search jobs">
+</div>
+
+<div class="row mb-2" *ngFor="let jobdetail of jobdetails | async | filter : searchText"
+    style="justify-content: center;">
+    <div class="col mb-3" style="max-width: 50vw; ">
+        <div class="card text-center">
+            <div class="card-header">
+                {{jobdetail.title}}
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{jobdetail.description}}</p>
+                <p class="text-center">Experience {{jobdetail.minExp}} - {{jobdetail.maxExp}}</p>
+                <!-- <p class="card-text">{{jobdetail.description}}</p>
+                <p class="card-text">Minimun experiance : {{jobdetail.minExp}}</p>
+                <p class="card-text">Minimun experiance : {{jobdetail.maxExp}}</p> -->
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" type="submit"
+                    (click)="apply(jobdetail.id)">Apply</button>
+            </div>
+            <div class="card-footer text-muted">
+                Last Date to Apply : {{jobdetail.jobExpiryDate}}
+            </div>
+        </div>
+    </div>
+    <!-- <div class="col">
+        <div class="card text-center">
+            <div class="card-header">
+                {{jobdetail.title}}
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{jobdetail.description}}</p>
+                <button class="btn btn-primary">View Details</button>
+            </div>
+            <div class="card-footer text-muted">
+                Last Date to Apply :   {{jobdetail.jobExpiryDate}}
+            </div>
+        </div>
+    </div> -->
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel2">Apply</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container shadow-lg-1 p-1" style="max-width: 35vw;">
+                    <div class="card" style="background-color: rgb(243, 246, 250); ">
+                        <div class="card-body mt-3">
+                            <form #f="ngForm" (keyup.enter)="save()">
+                                <div class="form-group m-1">
+                                    <div class="input-group mb-4 " id="username">
+                                        <input type="emailId" class="form-control" id="formGroupExampleInput" ngModel
+                                            #b1 placeholder="Enter emailId" name="emailId"
+                                            [(ngModel)]="applicant.emailId" required>
+                                    </div>
+                                </div>
+                                <div class="form-group m-1">
+                                    <div class="input-group mb-4 " id="password">
+                                        <input type="text" class="form-control" id="formGroupExampleInput2" ngModel #b2
+                                            name="panCard" placeholder="Enter PanCard Number"
+                                            [(ngModel)]="applicant.panCard" required>
+                                    </div>
+                                </div>
+                                <div class="form-group m-1">
+                                    <div class="input-group mb-4 " id="resume">
+                                        <input type="file" class="form-control" id="formGroupExampleInput2" ngModel #b2
+                                            name="resume" placeholder="Upload Resume"
+                                            (change)="onChange($event)" required>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-primary mt-1 text-white" type="submit" type="button"
+                                        data-bs-dismiss="modal" [disabled]="!f.valid" (click)="save()">Apply</button>
+                                </div>
+                            </form>
+                            <p *ngIf="isFetching && !error">Loading...</p>
+                            <div class="alert alert-danger mt-2" *ngIf="error">
+                                <h3>An Error Occurred</h3>
+                                <p>{{error}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

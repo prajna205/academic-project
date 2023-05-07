@@ -1,0 +1,58 @@
+/* .scrollbar{
+    overflow: hidden;
+    width: 100%;
+    max-height: 60vh;
+}
+.scrollbar:hover{
+    overflow: auto;
+    width: 100%;
+    max-height:60vh;
+}
+
+.active{
+    background-color: white !important;
+    border-bottom: 2px solid rgb(85,20,180) !important;
+    color: black !important;
+} */
+
+
+.card{
+  margin-top: 5px;
+  margin-bottom: 20%
+}
+
+/* ul>li>a{
+  font-size: large;
+} */
+
+/* .navbar{
+  background-color: rgb(59, 25, 110) !important;
+}
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(59, 25, 110) !important;
+
+  color: rgb(255, 255, 255);
+  text-align: center;
+} */
+.nav-link:hover{
+  background-color: #cdced6;
+  border-radius: 10px;
+}
+
+.active{
+  background-color: rgba(102, 99, 107, 0.2) !important;
+}
+/* .scrollbar{
+  overflow: hidden;
+  width: 100%;
+  max-height: 75vh;
+}
+.scrollbar:hover{
+  overflow: auto;
+  width: 100%;
+  max-height:75vh;
+} */

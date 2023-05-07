@@ -1,0 +1,116 @@
+<!-- <div class="container text-center">
+  <img src="../assets/log-in.png" alt="login-logo" style="margin-top: 5vh; height: 100px;">
+  <h4 class="text-center p-4 text-muted" >Sign-in to HIRING-EVENTS v2.0</h4>
+</div>
+<div class="container shadow-lg p-1" style="max-width: 35vw;">
+  <div class="card" style="background-color: rgb(243, 246, 250); ">
+    <div class="card-header text-center text-white"
+      style="font-family:'Times New Roman', Times, serif; font-weight: 700;">
+      USER LOGIN PORTAL
+    </div>
+     <div class="card-body mt-3">
+        <form #f="ngForm">
+          <div class="form-group m-1">
+            <div class="input-group mb-4 " id="username">
+
+              <span class="input-group-text" id="basic-addon1"><img src="../../assets/user.png" alt=""
+                  style="height: 30px;"> </span>
+              <input type="text" class="form-control" id="formGroupExampleInput" ngModel #b1
+                placeholder="Enter username" name="username" [(ngModel)]="loginModel.username" required>
+            </div>
+
+          </div>
+          <div class="form-group m-1">
+            <div class="input-group mb-4 " id="password">
+              <span class="input-group-text" id="basic-addon1"><img src="../../assets/key.png" alt=""
+                  style="height: 30px;"> </span>
+              <input type="password" class="form-control" id="formGroupExampleInput2" ngModel #b2 name="password"
+                placeholder="Enter Password" [(ngModel)]="loginModel.password" required>
+            </div>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-sm mt-1 text-white" type="submit" type="button" (click)="login(loginModel.username)"
+              [disabled]="!f.valid">Login</button>
+          </div>
+        </form>
+
+        <p *ngIf="isFetching && !error">Loading...</p>
+        <div class="alert alert-danger mt-2" *ngIf="error">
+          <h3>An Error Occurred</h3>
+          <p>{{error}}</p>
+        </div>
+
+    </div>
+  </div>
+</div> -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<section class="vh-100" style=" background-color: rgb(19, 45, 85);">
+
+  <div class="container  " style="padding-top: 6%;">
+    <div class="row d-flex justify-content-center align-items-center h-80">
+      <div class="col col-xl-10">
+        <div class="card  " style="border-radius: 1rem; height: 70vh; width: 45vw; margin: auto;">
+          <!-- <div class="row"> -->
+            
+            <!-- <div class="col-5  d-flex align-items-center"> -->
+              <div class="card-body  text-black"  style="margin: 10%; margin-top: 0%;">
+
+                <form #f="ngForm" (keyup.enter)="loginSubmit($event)">
+                  <div class="container text-center">
+                    <img src="../assets/log-in.png" alt="login-logo" style=" height: 100px;">
+                    <h4 class="text-center p-1 text-muted">Sign-in to HIRING-EVENTS v2.0</h4>
+                  </div>
+                  <div class="container text-center">
+                    <span class="h4 mt-2"
+                      style="font-family:'Times New Roman', Times, serif; font-weight: 700; text-align: center;">USER LOGIN PORTAL</span>
+                  </div>
+
+                  <!-- <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5> -->
+
+                  <div class="form-group m-1">
+                    <div class="input-group mb-4 " id="username">
+
+                      <span class="input-group-text" id="basic-addon1"><img src="../../assets/user.png" alt=""
+                          style="height: 30px;"> </span>
+                      <input type="text" class="form-control" id="formGroupExampleInput" ngModel #b1
+                        placeholder="Enter username" name="username" [(ngModel)]="loginModel.username" required>
+                    </div>
+
+                  </div>
+                  <div class="form-group m-1">
+                    <div class="input-group mb-4 " id="password">
+                      <span class="input-group-text" id="basic-addon1"><img src="../../assets/key.png" alt=""
+                          style="height: 30px;"> </span>
+                      <input [type]="showType ? 'text' : 'password' " class="form-control" id="formGroupExampleInput2" ngModel #b2
+                        name="password" placeholder="Enter Password" [(ngModel)]="loginModel.password" required>
+                      <button type="button" class="btn" style="background-color: white !important; border: 1px solid #5514b4;"
+                        (click)="toggleShow()">
+                        <i class="fa fa-eye fa-eye fa-lg"
+                          [hidden]="showPassword"></i>
+                        <i class="fa fa-eye fa-eye-slash fa-lg"
+                          [hidden]="!showPassword"></i>
+                        </button>
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <button class="btn btn-sm mt-1 text-white" type="submit" type="button"
+                      (click)="login(loginModel.username)"  [disabled]="!f.valid">Login &nbsp;<sa-spinner-circular-fixed
+                        id="loading" [size]="25" color="rgba(255, 255, 255, 1)" [thickness]="120" [enabled]="getVal">
+                      </sa-spinner-circular-fixed> </button>
+                  </div>
+                </form>
+                
+
+                <!-- <button (click)="goToForgetPassword()" style="border-color: #ffffff;"> <a class="small text-muted">
+                  Forgot password?</a></button> -->
+                  <a  class="small text-muted" href="/forget-password">Forget Password?</a>
+
+              </div>
+            <!-- </div> -->
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

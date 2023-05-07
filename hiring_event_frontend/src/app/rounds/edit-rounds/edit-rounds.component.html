@@ -1,0 +1,122 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist" style="border-bottom: 0px;">
+
+      <button class="nav-link  text-dark fw-bold" id="nav-create-tab" data-bs-toggle="tab" data-bs-target="#nav-create" type="button" role="tab" 
+      aria-controls="nav-create" aria-selected="true" (click)="enable()">Create Round Details</button>
+
+      <button class="nav-link active text-dark fw-bold" id="nav-view-tab" data-bs-toggle="tab" data-bs-target="#nav-view" type="button" role="tab" 
+      aria-controls="nav-view" aria-selected="false" (click)="enable1()">View Round Details</button>
+    </div>
+</nav>
+
+<br>
+
+<h1 style="font-family: 'Audiowide', cursive; text-align: center;">
+    <span class="utility1 rounded "><span>Update Interview Details</span></span>
+  </h1>
+  
+  <div class="form" *ngIf="!boolVar">
+    
+        <div class="row">
+            <div class="col mb-3">
+                <div class="form-group">
+                    <label for="firstName">Candidate Email : </label>
+                    <select class="form-select" aria-label="Default select example"
+                        [(ngModel)]="interviewRound.candidateEmailId" required name="CANDIDATE_EMAIL" #box2
+                        ngModel>
+                        <ng-container *ngFor="let userInfo of userInfos | async ">
+                            <option *ngIf="userInfo.userType=== candidate" [value]="userInfo.email">
+                                {{userInfo.email}}
+                            </option>
+                        </ng-container>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col mb-3">
+                <div class="form-group">
+                    <label for="firstName">Interviewer Email Id : </label>
+                    <select class="form-select" aria-label="Default select example"
+                        [(ngModel)]="interviewRound.interviewerEmailId" required name="INTERVIEWER_EMAIL_ID" #box3
+                        ngModel >
+                        <ng-container *ngFor="let userInfo of userInfos | async ">
+                            <option *ngIf="userInfo.userType=== interviewer" [value]="userInfo.email">
+                                {{userInfo.email}}
+                            </option>
+                        </ng-container>
+                    </select>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="form-group">
+                    <label for="title">Title : </label>
+                    <input type="text" class="form-control" id="title" name="team" ngModel #box4
+                        [(ngModel)]="interviewRound.title" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col mb-3">
+                <div class="form-group">
+                    <label for="interviewDate">Interview Date : </label>
+                    <input type="date" class="form-control" id="interviewDate" name="interviewDate" ngModel #box5
+                        [(ngModel)]="interviewRound.interviewDate" required>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="form-group">
+                    <label for="interviewTime">Interview Time : </label>
+                    <input type="time" class="form-control" id="interviewTime" name="interviewTime" ngModel #box6
+                        [(ngModel)]="interviewRound.interviewTime" required>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="form-group">
+                    <label for="virtualLink">Virtual Link : </label>
+                    <input type="text" class="form-control" id="virtualLink" name="virtualLink" ngModel #box7
+                        [(ngModel)]="interviewRound.virtualLink" required>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="form-group">
+                    <label for="interviewFeedBack">Interview FeedBack : </label>
+                    <input type="text" class="form-control" id="interviewFeedBack" name="interviewFeedBack" ngModel #box8
+                        [(ngModel)]="interviewRound.interviewFeedBack" required>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="form-group">
+                    <label for="status">Status : </label>
+                    <select class="form-select" aria-label="Default select example"
+                        [(ngModel)]="interviewRound.status" required name="INTERVIEW_STATUS" #box9
+                        ngModel>
+
+                        <option value="SCHEDULED">Scheduled</option>
+                        <option value="CANCELLED">Cancelled</option>
+                        <option value="POSITIVE">Positive</option>
+                        <option value="NEGATIVE">Negative</option>
+                        <option value="OFFERED">Offered</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+  
+      <div class="text-center mt-4">
+        <button class="btn btn-success mt-2" (click)="updateInterviewRoundDetails()">Update</button>
+      </div>
+  </div>
+  
+  <div *ngIf="boolVar" class="row justify-content-center">
+    <div class="col-6">
+      <div class="card ">
+        <div class="text-center">
+          <h2 class="text-success text-center ">The Page Updated Successfully</h2>
+          <h4 class="text-success text-center">Thank You !</h4>
+          <button class="btn btn-primary " type="button" (click)="list()">Back to List</button>
+        </div>
+      </div>
+    </div>
+  
+  </div>

@@ -1,0 +1,22 @@
+.active{
+    background-color: white !important;
+    border-bottom: 2px solid rgb(85,20,180) !important;
+    color: black !important;
+}
+.nav-link:hover{
+    background-color: white !important;
+    border-bottom: 2px solid rgb(85,20,180) !important;
+    color: black !important;
+}
+h1>span{
+    color:black;
+    font-size: larger;
+    font-weight: bolder;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+select.ng-invalid.ng-touched{
+    border: 1px solid red;
+}

@@ -1,0 +1,85 @@
+/* .active{
+    background-color: white !important;
+    border-bottom: 2px solid rgb(85,20,180) !important;
+    color: black !important;
+}
+.nav-link:hover{
+    background-color: white !important;
+    border-bottom: 2px solid rgb(85,20,180) !important;
+    color: black !important;
+}
+.scrollbar{
+    overflow: scroll;
+    width: 100%;
+    height: 475px;
+} */
+
+h1>span{
+    color:black;
+    font-size: larger;
+    font-weight: bolder;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+.help-block{
+      color: red;
+}
+
+
+.card{
+  margin-top: 5px;
+  margin-bottom: 20%
+}
+
+/* ul>li>a{
+  font-size: large;
+} */
+
+
+
+
+/* .nav-item:hover{
+  background-color: #2B32B2;
+  border-radius: 10px;
+} */
+
+
+/* .navbar{
+  background-color: rgb(59, 25, 110) !important;
+}
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(59, 25, 110) !important;
+
+  color: rgb(255, 255, 255);
+  text-align: center;
+} */
+.nav-link:hover{
+  background-color: #cdced6;
+  border-radius: 10px;
+}
+
+.active{
+  background-color: rgba(102, 99, 107, 0.2) !important;
+}
+/* .scrollbar{
+  overflow: hidden;
+  width: 100%;
+  max-height: 75vh;
+}
+.scrollbar:hover{
+  overflow: auto;
+  width: 100%;
+  max-height:75vh;
+} */
+
+
+
+
+

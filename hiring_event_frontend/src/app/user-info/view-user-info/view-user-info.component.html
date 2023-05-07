@@ -1,0 +1,61 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist" style="border-bottom: 0px;">
+
+        <button class="nav-link  text-dark fw-bold" id="nav-create-tab" data-bs-toggle="tab"
+            data-bs-target="#nav-create" type="button" role="tab" aria-controls="nav-create" aria-selected="true"
+            (click)="enable()">Create User Info</button>
+
+        <button class="nav-link active text-dark fw-bold" id="nav-view-tab" data-bs-toggle="tab" data-bs-target="#nav-view"
+            type="button" role="tab" aria-controls="nav-view" aria-selected="false" (click)="enable1()">View User
+            Info</button>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col">
+        <h2 style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center;"> 
+        <span class="utility1 rounded">List of UserInfo</span> 
+     </h2>
+    </div>
+    <div class="scrollbar">
+        <table class="table text-center table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" class="col-1">Id</th>
+                    <th scope="col" class="col-2">Email Id</th>
+                    <th scope="col" class="col-2">User Type</th>
+                    <th scope="col" class="col-2">Login Provider</th>
+                    <th scope="col" class="col-2">Is Mock</th>
+                    <th scope="col" class="col-3">Action</th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr *ngFor="let userInfo of userInfos | async">
+                    <td class="col-1">{{userInfo.id}}</td>
+                    <td class="col-2">{{userInfo.email}}</td>
+                    <td class="col-2">{{userInfo.userType}}</td>
+                    <td class="col-2">{{userInfo.loginProvider}}</td>
+                    <td class="col-2">{{userInfo.mockUser}}</td>
+                    <td class="col-3">
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn" style="background-color: white !important;" (click)="viewUserInfo(userInfo.id)"><i class="fa fa-eye fa-lg" style="color:black"></i></button>
+                            </div>
+                       
+                            <div class="col">
+                                <button type="button" class="btn" style="background-color: white !important;" (click)="updateUserInfo(userInfo.id)"><i class="fa fa-edit fa-lg" style="color:rgb(59, 25, 110)"></i></button>
+
+                            </div>
+                        
+                            <div class="col">
+                                <button type="button" class="btn" style="background-color: white !important;" (click)="deleteUserInfo(userInfo.id)"><i class="fa fa-trash fa-lg" style="color:red"></i></button>
+                            </div>
+
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
